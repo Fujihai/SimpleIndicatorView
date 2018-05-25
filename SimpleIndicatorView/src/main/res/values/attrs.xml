@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SimpleIndicatorView">
+
+        <!--指示器点类型：圆/正方形-->
+        <attr name="siv_type" format="enum">
+            <enum name="circle" value="0"/>
+            <enum name="square" value="1"/>
+        </attr>
+
+        <!--指示器点个数-->
+        <attr name="siv_count" format="integer"/>
+
+        <!--指示器点大小：圆则为半径 正方形则为边长-->
+        <attr name="siv_size" format="dimension"/>
+
+        <!--指示器点间的间隔-->
+        <attr name="siv_margin" format="dimension"/>
+
+        <!--指示器点未选中时的颜色-->
+        <attr name="siv_unselectedColor" format="color|integer"/>
+
+        <!--指示器点选中时的颜色-->
+        <attr name="siv_selectedColor" format="color|integer"/>
+
+        <!--指示器点的切换模式：inside-底层滑动 outside-顶层滑动 single-单个滑动-->
+        <attr name="siv_switch_mode" format="enum">
+            <enum name="bottom" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="single" value="2"/>
+        </attr>
+
+        <!--指示器点排列方向：水平或者垂直-->
+        <attr name="siv_orientation" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+        </attr>
+
+    </declare-styleable>
+
+</resources>

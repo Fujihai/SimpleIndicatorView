@@ -1,4 +1,4 @@
-package pers.liufushihai.simpleindicatorview;
+package pers.liufushihai.customview;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -18,13 +18,13 @@
         android:id="@+id/siv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:siv_count="5"
+        app:siv_count="4"
         app:siv_margin="10dp"
         app:siv_orientation="horizontal"
-        app:siv_selectedColor="@color/colorPrimary"
+        app:siv_selectedColor="#1a1a1b"
         app:siv_size="20dp"
-        app:siv_switch_mode="bottom"
-        app:siv_type="square"
+        app:siv_switch_mode="single"
+        app:siv_type="circle"
         app:siv_unselectedColor="#FFF" />
 
 </RelativeLayout>

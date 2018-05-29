@@ -3,6 +3,7 @@ package pers.liufushihai.sample;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -12,6 +13,7 @@ import java.util.List;
 import pers.liufushihai.customview.SimpleIndicatorView;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     private ViewPager mViewPager;
     private SimpleIndicatorView mSimpleIndicatorView;
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 mSimpleIndicatorView.setSelectedIndicatorIndex(position,positionOffset);
+                Log.d(TAG, "onPageScrolled: " + "position = " + position);
             }
 
             @Override

@@ -11,7 +11,7 @@
         <!--指示器点个数-->
         <attr name="siv_count" format="integer"/>
 
-        <!--指示器点大小：圆则为半径 正方形则为边长-->
+        <!--指示器点大小：圆则为直径大小 正方形则为边长-->
         <attr name="siv_size" format="dimension"/>
 
         <!--指示器点间的间隔-->

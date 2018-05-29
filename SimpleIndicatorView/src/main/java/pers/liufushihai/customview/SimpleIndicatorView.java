@@ -68,6 +68,16 @@ public class SimpleIndicatorView extends View {
     private float mSelectedIndicatorY;
     private int mCurrentSelectedIndex;
 
+    public SimpleIndicatorView(Context context) {
+        super(context);
+        init(context,null);
+    }
+
+    public SimpleIndicatorView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        init(context,attrs);
+    }
+
     /**
      * 指示器点构造函数
      *
@@ -99,8 +109,8 @@ public class SimpleIndicatorView extends View {
         int type = typedArray.getInt(R.styleable.SimpleIndicatorView_siv_type, DEFAULT_TYPE);
         mType = Type.values()[type];
         mCount = typedArray.getInt(R.styleable.SimpleIndicatorView_siv_count, DEFAULT_COUNT);
-        mSize = typedArray.getInt(R.styleable.SimpleIndicatorView_siv_size, DEFAULT_SIZE);
-        mMargin = typedArray.getInt(R.styleable.SimpleIndicatorView_siv_margin, DEFAULT_MARGIN);
+        mSize = typedArray.getDimensionPixelSize(R.styleable.SimpleIndicatorView_siv_size, DEFAULT_SIZE);
+        mMargin = typedArray.getDimensionPixelSize(R.styleable.SimpleIndicatorView_siv_margin, DEFAULT_MARGIN);
         mUnselectedColor = typedArray.getColor(
                 R.styleable.SimpleIndicatorView_siv_unselectedColor, DEFAULT_UNSELECTED_COLOR);
         mSelectedColor = typedArray.getColor(
@@ -177,9 +187,9 @@ public class SimpleIndicatorView extends View {
             float cy = mViewHeight / 2;
             for (int i = 0; i < mCount; i++) {
                 if (Orientation.HORIZONTAL == mOrientation) {
-                    canvas.drawCircle(calculateIndicatorX(i), cy, mSize, mPaint);
+                    canvas.drawCircle(calculateIndicatorX(i), cy, mSize / 2, mPaint);
                 } else {
-                    canvas.drawCircle(cx, calculateIndicatorY(i), mSize, mPaint);
+                    canvas.drawCircle(cx, calculateIndicatorY(i), mSize / 2, mPaint);
                 }
             }
         } else if (Type.SQUARE == mType) {
@@ -207,7 +217,7 @@ public class SimpleIndicatorView extends View {
         canvas.save();
         mPaint.setColor(mSelectedColor);
 
-        if (mType == Type.CIRCLE) {
+        if (Type.CIRCLE == mType) {
             float cx = mViewWidth / 2;
             float cy = mViewHeight / 2;
             if (SwitchMode.BOTTOM == mMode) {
@@ -216,9 +226,9 @@ public class SimpleIndicatorView extends View {
                 mPath.reset();
                 for (int i = 0; i < mCount; i++) {
                     if (Orientation.HORIZONTAL == mOrientation) {
-                        mPath.addCircle(calculateIndicatorX(i), cy, mSize, Path.Direction.CW);
+                        mPath.addCircle(calculateIndicatorX(i), cy, mSize / 2, Path.Direction.CW);
                     } else {
-                        mPath.addCircle(cx, calculateIndicatorY(i), mSize, Path.Direction.CW);
+                        mPath.addCircle(cx, calculateIndicatorY(i), mSize / 2, Path.Direction.CW);
                     }
                 }
                 canvas.clipPath(mPath);
@@ -233,8 +243,8 @@ public class SimpleIndicatorView extends View {
                     mSelectedIndicatorY = calculateIndicatorY(mCurrentSelectedIndex);
                 }
             }
-            canvas.drawCircle(mSelectedIndicatorX, mSelectedIndicatorY, mSize, mPaint);
-        } else if (mType == Type.SQUARE) {
+            canvas.drawCircle(mSelectedIndicatorX, mSelectedIndicatorY, mSize / 2, mPaint);
+        } else if (Type.SQUARE == mType) {
             if (SwitchMode.BOTTOM == mMode) {
                 mPath.reset();
                 for (int i = 0; i < mCount; i++) {
@@ -278,8 +288,8 @@ public class SimpleIndicatorView extends View {
     private float calculateIndicatorX(int position) {
         float resX = 0;
         if (Type.CIRCLE == mType) {
-            float indicatorRealWidth = mCount * mSize * 2 + (mCount - 1) * mMargin;
-            float margin = position * mMargin + position * mSize * 2;
+            float indicatorRealWidth = mCount * mSize + (mCount - 1) * mMargin;
+            float margin = position * mMargin + position * mSize;
             resX = mViewWidth / 2 - indicatorRealWidth / 2 + mSize + margin;
         } else if (Type.SQUARE == mType) {
             float indicatorRealWidth = mCount * mSize + (mCount - 1) * mMargin;
@@ -298,8 +308,8 @@ public class SimpleIndicatorView extends View {
     private float calculateIndicatorY(int position) {
         float resY = 0;
         if (Type.CIRCLE == mType) {
-            float indicatorRealHeight = mCount * mSize * 2 + (mCount - 1) * mMargin;
-            float margin = position * mMargin + position * mSize * 2;
+            float indicatorRealHeight = mCount * mSize + (mCount - 1) * mMargin;
+            float margin = position * mMargin + position * mSize;
             resY = mViewHeight / 2 - indicatorRealHeight / 2 + mSize + margin;
         } else if (Type.SQUARE == mType) {
             float indicatorHeight = mCount * mSize + (mCount - 1) * mMargin;
@@ -334,7 +344,6 @@ public class SimpleIndicatorView extends View {
 
     /**
      * 根据传入的偏移量进行绘制，主要用于BOTTOM、TOP模式
-     *
      * @param idx    指示器点的下标
      * @param offset ViewPager滑动时的偏移量
      */
@@ -349,12 +358,12 @@ public class SimpleIndicatorView extends View {
             if (Type.CIRCLE == mType) {
                 if (Orientation.HORIZONTAL == mOrientation) {
                     float destIndicatorX = calculateIndicatorX(idx);
-                    float towIndicatorDistance = mSize * 2 + mMargin;
+                    float towIndicatorDistance = mSize + mMargin;
                     mSelectedIndicatorX = destIndicatorX + offset * towIndicatorDistance;
                     invalidate();
                 } else {
                     float destIndicatorY = calculateIndicatorY(idx);
-                    float towIndicatorDistance = mSize * 2 + mMargin;
+                    float towIndicatorDistance = mSize + mMargin;
                     mSelectedIndicatorY = destIndicatorY + offset * towIndicatorDistance;
                     invalidate();
                 }
@@ -362,7 +371,7 @@ public class SimpleIndicatorView extends View {
                 if (Orientation.HORIZONTAL == mOrientation) {
                     float destIndicatorX = calculateIndicatorX(idx);
                     float towIndicatorDistance = mSize + mMargin;
-                    mSelectedIndicatorY = destIndicatorX + offset * towIndicatorDistance;
+                    mSelectedIndicatorX = destIndicatorX + offset * towIndicatorDistance;
                     invalidate();
                 } else {
                     float destIndicatorY = calculateIndicatorY(idx);

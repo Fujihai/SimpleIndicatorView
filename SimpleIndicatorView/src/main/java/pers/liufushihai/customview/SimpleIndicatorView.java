@@ -382,4 +382,36 @@ public class SimpleIndicatorView extends View {
             }
         }
     }
+
+    public void setType(Type type) {
+        mType = type;
+    }
+
+    public void setCount(int count) {
+        mCount = count;
+    }
+
+    public void setSize(int size) {
+        mSize = size;
+    }
+
+    public void setMargin(float margin) {
+        mMargin = margin;
+    }
+
+    public void setSelectedColor(int selectedColor) {
+        mSelectedColor = selectedColor;
+    }
+
+    public void setUnselectedColor(int unselectedColor) {
+        mUnselectedColor = unselectedColor;
+    }
+
+    public void setMode(SwitchMode mode) {
+        mMode = mode;
+    }
+
+    public void setOrientation(Orientation orientation) {
+        mOrientation = orientation;
+    }
 }

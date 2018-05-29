@@ -1,30 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000"
+    android:orientation="vertical"
     tools:context="pers.liufushihai.sample.MainActivity">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="300dp">
 
     </android.support.v4.view.ViewPager>
 
-    <pers.liufushihai.customview.SimpleIndicatorView
-        android:id="@+id/siv"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:siv_count="4"
-        app:siv_margin="10dp"
-        app:siv_orientation="horizontal"
-        app:siv_selectedColor="#1a1a1b"
-        app:siv_size="20dp"
-        app:siv_switch_mode="single"
-        app:siv_type="circle"
-        app:siv_unselectedColor="#FFF" />
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <TextView
+            android:textSize="16dp"
+            android:gravity="center"
+            android:text="circle-bottom  "
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <pers.liufushihai.customview.SimpleIndicatorView
+            android:layout_weight="7"
+            android:id="@+id/siv_bottom"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:siv_count="4"
+            app:siv_margin="10dp"
+            app:siv_orientation="horizontal"
+            app:siv_selectedColor="#b3b37c"
+            app:siv_size="20dp"
+            app:siv_switch_mode="bottom"
+            app:siv_type="circle"
+            app:siv_unselectedColor="#b0c9c9" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="16dp"
+            android:gravity="center"
+            android:text="circle-top  "
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <pers.liufushihai.customview.SimpleIndicatorView
+            android:layout_weight="7"
+            android:id="@+id/siv_top"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:siv_count="4"
+            app:siv_margin="10dp"
+            app:siv_orientation="horizontal"
+            app:siv_selectedColor="#b3b37c"
+            app:siv_size="20dp"
+            app:siv_switch_mode="top"
+            app:siv_type="circle"
+            app:siv_unselectedColor="#b0c9c9" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="16dp"
+            android:gravity="center"
+            android:text="circle-single  "
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <pers.liufushihai.customview.SimpleIndicatorView
+            android:layout_weight="7"
+            android:id="@+id/siv_single"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:siv_count="4"
+            app:siv_margin="10dp"
+            app:siv_orientation="horizontal"
+            app:siv_selectedColor="#b3b37c"
+            app:siv_size="20dp"
+            app:siv_switch_mode="single"
+            app:siv_type="circle"
+            app:siv_unselectedColor="#b0c9c9" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="16dp"
+            android:gravity="center"
+            android:text="square-bottom  "
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <pers.liufushihai.customview.SimpleIndicatorView
+            android:layout_weight="7"
+            android:id="@+id/siv_bottom_s"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:siv_count="4"
+            app:siv_margin="10dp"
+            app:siv_orientation="horizontal"
+            app:siv_selectedColor="#b3b37c"
+            app:siv_size="20dp"
+            app:siv_switch_mode="bottom"
+            app:siv_type="square"
+            app:siv_unselectedColor="#b0c9c9" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="16dp"
+            android:gravity="center"
+            android:text="square-top  "
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <pers.liufushihai.customview.SimpleIndicatorView
+            android:layout_weight="7"
+            android:id="@+id/siv_top_s"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:siv_count="4"
+            app:siv_margin="10dp"
+            app:siv_orientation="horizontal"
+            app:siv_selectedColor="#b3b37c"
+            app:siv_size="20dp"
+            app:siv_switch_mode="top"
+            app:siv_type="square"
+            app:siv_unselectedColor="#b0c9c9" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textSize="16dp"
+            android:gravity="center"
+            android:text="squre-single  "
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <pers.liufushihai.customview.SimpleIndicatorView
+            android:layout_weight="7"
+            android:id="@+id/siv_single_s"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            app:siv_count="4"
+            app:siv_margin="10dp"
+            app:siv_orientation="horizontal"
+            app:siv_selectedColor="#b3b37c"
+            app:siv_size="20dp"
+            app:siv_switch_mode="single"
+            app:siv_type="square"
+            app:siv_unselectedColor="#b0c9c9" />
+
+    </LinearLayout>
+
+</LinearLayout>

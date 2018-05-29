@@ -1,5 +1,6 @@
 package pers.liufushihai.sample;
 
+import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,9 +17,23 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     private ViewPager mViewPager;
-    private SimpleIndicatorView mSimpleIndicatorView;
+
+    private SimpleIndicatorView mSivBottom;
+    private SimpleIndicatorView mSivTop;
+    private SimpleIndicatorView mSivSingle;
+
+    private SimpleIndicatorView mSivBottomS;
+    private SimpleIndicatorView mSivTopS;
+    private SimpleIndicatorView mSivSingleS;
+
     private List<View> colorLayoutList = new ArrayList<>();
     private ViewPagerAdapter mViewPagerAdapter;
+    private int colorValueList[] = {
+            Color.parseColor("#296bae"),
+            Color.parseColor("#39ae29"),
+            Color.parseColor("#aeac29"),
+            Color.parseColor("#29a7ae")
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +48,37 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                mSimpleIndicatorView.setSelectedIndicatorIndex(position,positionOffset);
+
+                mSivBottom.setSelectedColor(colorValueList[position]);
+                mSivBottom.setSelectedIndicatorIndex(position,positionOffset);
+
+                mSivTop.setSelectedColor(colorValueList[position]);
+                mSivTop.setSelectedIndicatorIndex(position,positionOffset);
+
+                mSivSingle.setSelectedColor(colorValueList[position]);
+                mSivSingle.setSelectedIndicatorIndex(position,positionOffset);
+
+                mSivBottomS.setSelectedColor(colorValueList[position]);
+                mSivBottomS.setSelectedIndicatorIndex(position,positionOffset);
+
+                mSivTopS.setSelectedColor(colorValueList[position]);
+                mSivTopS.setSelectedIndicatorIndex(position,positionOffset);
+
+                mSivSingleS.setSelectedColor(colorValueList[position]);
+                mSivSingleS.setSelectedIndicatorIndex(position,positionOffset);
+
                 Log.d(TAG, "onPageScrolled: " + "position = " + position);
             }
 
             @Override
             public void onPageSelected(int position) {
-                mSimpleIndicatorView.setSelectedIndicatorIndex(position);
+                mSivBottom.setSelectedIndicatorIndex(position);
+                mSivTop.setSelectedIndicatorIndex(position);
+                mSivSingle.setSelectedIndicatorIndex(position);
+
+                mSivBottomS.setSelectedIndicatorIndex(position);
+                mSivTopS.setSelectedIndicatorIndex(position);
+                mSivSingleS.setSelectedIndicatorIndex(position);
             }
 
             @Override
@@ -48,7 +87,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mSimpleIndicatorView = findViewById(R.id.siv);
+        mSivBottom = findViewById(R.id.siv_bottom);
+        mSivTop = findViewById(R.id.siv_top);
+        mSivSingle = findViewById(R.id.siv_single);
+        mSivBottomS = findViewById(R.id.siv_bottom_s);
+        mSivTopS = findViewById(R.id.siv_top_s);
+        mSivSingleS = findViewById(R.id.siv_single_s);
     }
 
     /**

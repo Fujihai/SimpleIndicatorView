@@ -101,7 +101,7 @@ dependencies {
 Screenshot
 -----------
 
-![Screenshot]()
+![Screenshot](https://github.com/liufushihai/SimpleIndicatorView/blob/master/Sceenshots/SimpleIndicatorView.gif)
 
 Reference
 -----------
